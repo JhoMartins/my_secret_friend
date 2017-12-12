@@ -61,8 +61,8 @@ RSpec.describe CampaignsController, type: :controller do
 
     it "Create campaign with right attributes" do
       expect(Campaign.last.user).to eql(@current_user)
-      expect(Campaign.last.title).to eql(@campaign_attributes[:title])
-      expect(Campaign.last.description).to eql(@campaign_attributes[:description])
+      expect(Campaign.last.title).to eql("Nova Campanha")
+      expect(Campaign.last.description).to eql("Descreva sua campanha...")
       expect(Campaign.last.status).to eql('pending')
     end
 
@@ -100,101 +100,7 @@ RSpec.describe CampaignsController, type: :controller do
       request.env["HTTP_ACCEPT"] = 'application/json'
     end
 
-    context "User is the Campaign Owner" dorequire 'rails_helper'
-
-RSpec.describe CampaignsController, type: :controller do
-
-  describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  endrequire 'rails_helper'
-
-RSpec.describe CampaignsController, type: :controller do
-
-  describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #raffle" do
-    it "returns http success" do
-      get :raffle
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-end
-
-
-  describe "GET #update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #raffle" do
-    it "returns http success" do
-      get :raffle
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-end
-
+    context "User is the Campaign Owner" do
       before(:each) do
         campaign = create(:campaign, user: @current_user)
         put :update, params: {id: campaign.id, campaign: @new_campaign_attributes}
